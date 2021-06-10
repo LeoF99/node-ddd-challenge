@@ -1,0 +1,92 @@
+openapi: "3.0.2"
+info:
+  title: enrollments-service
+  version: "1.0"
+paths:
+  /progress:
+    post:
+      summary: Returns a new or a updated progress.
+      tags:
+        - /progress
+      description: >-
+        Create a new progress entity or updates if request body contains progress id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Progress'
+        required: true
+      responses:
+        '200':
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Progress'
+        default:
+          description: Invalid request.
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Error'
+
+  /progress/{id}:
+    get:
+      summary: Returns a Progress by ID.
+      tags:
+        - /progress
+      description: >-
+        Find a progress by provided ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id of existing Progress.
+          schema:
+            type : integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Successful request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Progress'
+        default:
+          description: Invalid request.
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Error:
+      properties:
+        message:
+          type: string
+      required:
+        - message
+
+    Progress:
+      type: object
+      required:
+        - userId
+        - courseId
+        - resourceId
+        - resourceType
+        - value
+      properties:
+        id:
+          type: number
+        courseId:
+          type: string
+        resourceId:
+          type: string
+        resourdeType:
+          type: string
+        value:
+          type: number
+        
+        
