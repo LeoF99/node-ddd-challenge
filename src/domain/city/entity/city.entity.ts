@@ -25,3 +25,5 @@ class City {
     return this.state;
   }
 }
+
+export default City
