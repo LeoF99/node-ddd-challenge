@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import express from 'express';
 
 import DatabaseFactory from './configurations/factories/databaseFactory';
+import Routes from './configurations/router/routes';
 import App from './app';
 
 const app = new App({
@@ -10,7 +11,7 @@ const app = new App({
     express.json(),
     express.urlencoded({ extended: true }),
   ],
-  router: undefined,
+  router: new Routes().getRouter(),
   database: DatabaseFactory.getInstance()
 });
 

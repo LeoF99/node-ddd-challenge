@@ -1,5 +1,4 @@
 import ICity from "../entity/interface/city.entity.interface";
-import City from "../entity/city.entity";
 import ICityRepository from "../repository/city.repository.interface";
 
 class CityService {
