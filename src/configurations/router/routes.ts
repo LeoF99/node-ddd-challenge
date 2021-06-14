@@ -20,7 +20,7 @@ class Routes {
   private setRoutes(): void {
     this.router.post('/city', this.cityController.create);
     this.router.get('/city/name', this.cityController.findByName);
-    this.router.get('/get/state', this.cityController.findByState);
+    this.router.get('/city/state', this.cityController.findByState);
   }
 }
 

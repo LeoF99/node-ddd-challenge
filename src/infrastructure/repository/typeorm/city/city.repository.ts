@@ -1,4 +1,4 @@
-import { getConnection } from 'typeorm';
+import { getConnection, Like } from 'typeorm';
 
 import ICityRepository from '../../../../domain/city/repository/city.repository.interface';
 import ICityEntity from '../../../../domain/city/entity/interface/city.entity.interface';
@@ -14,6 +14,22 @@ class CityRepository implements ICityRepository {
       .save(cityModel);
 
     return createdCity.toEntity();
+  }
+
+  public async findByName(name: string): Promise<CityEntity | undefined> {
+    const query = {
+      name: Like(`%${name}%`)
+    }
+
+    return this.findOne(query);
+  }
+
+  public async findByState(state: string): Promise<CityEntity | undefined> {
+    const query = {
+      state: Like(`%${state}%`)
+    }
+
+    return this.findOne(query);
   }
 
   public async findOne(where: Object): Promise<CityEntity | undefined> {

@@ -10,9 +10,9 @@ class CityService {
 
   create = async (city: ICity) => await this.cityRepository.create(city);
 
-  findByName = async (name: string) => await this.cityRepository.findOne({ name });
+  findByName = async (name: string) => await this.cityRepository.findByName(name);
 
-  findByState = async (state: string) => await this.cityRepository.findOne({ state });
+  findByState = async (state: string) => await this.cityRepository.findByState(state);
 }
 
 export default CityService;
