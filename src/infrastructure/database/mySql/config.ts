@@ -3,11 +3,11 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
 
 dotenv.config();
 
-const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DATABASE } = process.env;
+const { ENV, DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DATABASE } = process.env;
 
 const mySqlConfig: MysqlConnectionOptions = {
   type: 'mysql',
-  host: String(DB_HOST),
+  host: ENV === 'prod' ? String(DB_HOST) : 'localhost',
   port: Number(DB_PORT),
   username: String(DB_USERNAME),
   password: String(DB_PASSWORD),

@@ -10,9 +10,11 @@ class Database implements IDatabase {
     try {
       if (!this.DB_CONNECTION) {
         this.DB_CONNECTION = await createConnection(mySqlConfig);
+        console.log('MySql successfully connected 🚀');
       }
     } catch (error) {
-
+      console.log('Error connecting to MySql 😢');
+      console.log(error.message)
     }
   }
 
