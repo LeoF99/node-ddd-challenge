@@ -1,15 +1,33 @@
 import IClient from '../entity/interface/client.entity.interface';
 import IClientRepository from '../repository/client.repository.interface';
 import ClientNotFound from '../exceptions/clientNotFound.exception';
+import ICreateClientDTO from './createClientDTO.interface';
+import ICityRepository from '../../city/repository/city.repository.interface';
 
 class ClientService {
   private readonly clientRepository: IClientRepository;
+  private readonly cityRepository: ICityRepository;
 
-  constructor(clientRepository: IClientRepository) {
+  constructor(clientRepository: IClientRepository, cityRepository: ICityRepository) {
     this.clientRepository = clientRepository;
+    this.cityRepository = cityRepository;
   }
 
-  create = async (clientData: IClient) => this.clientRepository.create(clientData);
+  create = async (clientData: ICreateClientDTO) => {
+    const city = await this.cityRepository.findOne({ id: clientData.cityId });
+
+    if(!city) throw new Error('Cidade não encontrada');
+
+    const client = await this.clientRepository.create({
+      name: clientData.name,
+      gender: clientData.gender,
+      birthdate: clientData.birthdate,
+      age: clientData.age,
+      city: city,
+    });
+
+    return client;
+  }
 
   findByName = async (name: string) => {
     const client = await this.clientRepository.findByName(name);
