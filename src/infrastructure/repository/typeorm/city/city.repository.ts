@@ -18,24 +18,24 @@ class CityRepository implements ICityRepository {
 
   public async findByName(name: string): Promise<CityEntity | undefined> {
     const query = {
-      name: Like(`%${name}%`)
-    }
+      name: Like(`%${name}%`),
+    };
 
     return this.findOne(query);
   }
 
   public async findByState(state: string): Promise<CityEntity | undefined> {
     const query = {
-      state: Like(`%${state}%`)
-    }
+      state: Like(`%${state}%`),
+    };
 
     return this.findOne(query);
   }
 
   public async findOne(where: Object): Promise<CityEntity | undefined> {
     const city = await getConnection()
-    .getRepository(CityModel)
-    .findOne(where);
+      .getRepository(CityModel)
+      .findOne(where);
 
     return city?.toEntity();
   }

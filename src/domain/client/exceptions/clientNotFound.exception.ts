@@ -1,4 +1,4 @@
-import GeneralClient from "./generalClient.exception";
+import GeneralClient from './generalClient.exception';
 
 class ClientNotFound extends GeneralClient {
   constructor() {

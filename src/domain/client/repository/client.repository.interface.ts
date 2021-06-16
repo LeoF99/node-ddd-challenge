@@ -1,5 +1,5 @@
-import IClient from "../entity/interface/client.entity.interface";
-import Client from "../entity/client.entity";
+import IClient from '../entity/interface/client.entity.interface';
+import Client from '../entity/client.entity';
 
 interface IClientRepository {
   create(clientData: IClient): Promise<Client>;

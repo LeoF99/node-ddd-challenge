@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import {
+  Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn,
+} from 'typeorm';
 
 import IClientEntity, { Gender } from '../../../../domain/client/entity/interface/client.entity.interface';
 import ClientEntity from '../../../../domain/client/entity/client.entity';
@@ -31,7 +33,7 @@ class Client {
     gender: Gender,
     birthdate: Date,
     age: number,
-    city: City
+    city: City,
   ) {
     this.name = name;
     this.gender = gender;
@@ -47,8 +49,8 @@ class Client {
       gender: this.gender,
       birthdate: this.birthdate,
       age: this.age,
-      city: this.city.toEntity()
-    })
+      city: this.city.toEntity(),
+    });
   }
 
   static toModel(entity: IClientEntity): Client {
@@ -57,7 +59,7 @@ class Client {
       entity.gender,
       entity.birthdate,
       entity.age,
-      City.toModel(<ICity>{...entity.city})
+      City.toModel(<ICity>{ ...entity.city }),
     );
   }
 }

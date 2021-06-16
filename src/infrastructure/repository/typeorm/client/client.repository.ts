@@ -16,9 +16,9 @@ class ClientRepository implements IClientRepository {
     return createdCity.toEntity();
   }
 
-  public async findByName(name: string): Promise<ClientEntity | undefined>{
+  public async findByName(name: string): Promise<ClientEntity | undefined> {
     const query = {
-      name: Like(`%${name}%`)
+      name: Like(`%${name}%`),
     };
 
     return this.findOne(query);
@@ -37,7 +37,7 @@ class ClientRepository implements IClientRepository {
 
     const client = await repo.findOne(id);
 
-    if(!client) return client;
+    if (!client) return client;
 
     const deletedClient = await repo.remove(client);
 
@@ -47,9 +47,9 @@ class ClientRepository implements IClientRepository {
   public async updateName(id: number, name: string): Promise<ClientEntity | undefined> {
     const repo = getConnection().getRepository(ClientModel);
 
-    const update = await repo.update(id, { name } as Partial<ClientModel>)
+    const update = await repo.update(id, { name } as Partial<ClientModel>);
 
-    if(!update.affected) return undefined;
+    if (!update.affected) return undefined;
 
     const client = await repo.findOne(id);
 

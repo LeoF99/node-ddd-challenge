@@ -5,7 +5,7 @@ class DatabaseFactory {
   private static instance: IDatabase;
 
   static getInstance(): IDatabase {
-    if(!DatabaseFactory.instance) {
+    if (!DatabaseFactory.instance) {
       DatabaseFactory.instance = new Database();
     }
 

@@ -1,4 +1,4 @@
-import { Request, Response} from 'express';
+import { Request, Response } from 'express';
 
 import CityService from '../../domain/city/service/city.service';
 
@@ -15,7 +15,7 @@ class CityController {
     const createdCity = await this.cityService.create({ name, state });
 
     res.json(createdCity);
-  }
+  };
 
   findByName = async (req: Request, res: Response) => {
     const { name } = req.query;
@@ -23,7 +23,7 @@ class CityController {
     const city = await this.cityService.findByName(String(name));
 
     res.json(city);
-  }
+  };
 
   findByState = async (req: Request, res: Response) => {
     const { state } = req.query;
@@ -31,7 +31,7 @@ class CityController {
     const city = await this.cityService.findByState(String(state));
 
     res.json(city);
-  }
+  };
 }
 
 export default CityController;

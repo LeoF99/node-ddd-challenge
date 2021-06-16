@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
-import CityController from "../../application/controllers/city.controller";
-import CityControllerFactory from "../factories/city.controller.factory";
+import CityController from '../../application/controllers/city.controller';
+import CityControllerFactory from '../factories/city.controller.factory';
 
 class Routes {
   private readonly router: Router;
+
   private readonly cityController: CityController;
 
   constructor() {

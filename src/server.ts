@@ -12,7 +12,7 @@ const app = new App({
     express.urlencoded({ extended: true }),
   ],
   router: new Routes().getRouter(),
-  database: DatabaseFactory.getInstance()
+  database: DatabaseFactory.getInstance(),
 });
 
 app.databaseSetup();

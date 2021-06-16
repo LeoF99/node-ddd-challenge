@@ -3,7 +3,9 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
 
 dotenv.config();
 
-const { ENV, DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DATABASE } = process.env;
+const {
+  ENV, DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DATABASE,
+} = process.env;
 
 const mySqlConfig: MysqlConnectionOptions = {
   type: 'mysql',

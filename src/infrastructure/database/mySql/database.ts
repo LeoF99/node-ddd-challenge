@@ -14,7 +14,7 @@ class Database implements IDatabase {
       }
     } catch (error) {
       console.log('Error connecting to MySql 😢');
-      console.log(error.message)
+      console.log(error.message);
     }
   }
 

@@ -1,8 +1,8 @@
-import City from "../../../city/entity/city.entity";
+import City from '../../../city/entity/city.entity';
 
 export enum Gender {
   male = 'MALE',
-  female = 'FEMALE'
+  female = 'FEMALE',
 }
 
 interface IClient {

@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
+import {
+  Entity, PrimaryGeneratedColumn, Column, Index,
+} from 'typeorm';
 
 import ICityEntity from '../../../../domain/city/entity/interface/city.entity.interface';
 import CityEntity from '../../../../domain/city/entity/city.entity';
@@ -18,7 +20,7 @@ class City {
   constructor(
     name: string,
     state: string,
-    id?: number
+    id?: number,
   ) {
     this.name = name;
     this.state = state;
@@ -30,14 +32,14 @@ class City {
       id: this?.id,
       name: this.name,
       state: this.state,
-    })
+    });
   }
 
   static toModel(entity: ICityEntity): City {
     return new City(
       entity.name,
       entity.state,
-      entity.id
+      entity.id,
     );
   }
 }
