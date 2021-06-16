@@ -9,7 +9,7 @@ class ClientControllerFactory {
   public static getInstance() {
     if (!this.instance) {
       this.instance = new ClientController(
-        new ClientService(new ClientRepository(), new CityRepository()),
+        new ClientService(new ClientRepository()),
       );
     }
 
