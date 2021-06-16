@@ -30,8 +30,8 @@ class Routes {
 
     this.router.post('/clients', this.clientController.create);
     this.router.get('/clients/name', this.clientController.findByName);
-    this.router.get('/clients', this.clientController.findById);
-    this.router.delete('/clients', this.clientController.remove);
+    this.router.get('/clients/:id', this.clientController.findById);
+    this.router.delete('/clients/:id', this.clientController.remove);
     this.router.patch('/clients/:id', this.clientController.updateName);
   }
 }

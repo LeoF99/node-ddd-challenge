@@ -1,11 +1,9 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn,
+  Entity, PrimaryGeneratedColumn, Column,
 } from 'typeorm';
 
 import IClientEntity, { Gender } from '../../../../domain/client/entity/interface/client.entity.interface';
 import ClientEntity from '../../../../domain/client/entity/client.entity';
-import City from './city.model';
-import ICity from '../../../../domain/city/entity/interface/city.entity.interface';
 
 @Entity('client')
 class Client {
@@ -24,22 +22,21 @@ class Client {
   @Column()
   private readonly age: number;
 
-  @OneToOne(() => City)
-  @JoinColumn()
-  private readonly city: City;
+  @Column()
+  private readonly cityId: number;
 
   constructor(
     name: string,
     gender: Gender,
     birthdate: Date,
     age: number,
-    city: City,
+    city: number,
   ) {
     this.name = name;
     this.gender = gender;
     this.birthdate = birthdate;
     this.age = age;
-    this.city = city;
+    this.cityId = city;
   }
 
   toEntity(): ClientEntity {
@@ -49,7 +46,7 @@ class Client {
       gender: this.gender,
       birthdate: this.birthdate,
       age: this.age,
-      city: this.city.toEntity(),
+      cityId: this.cityId,
     });
   }
 
@@ -59,7 +56,7 @@ class Client {
       entity.gender,
       entity.birthdate,
       entity.age,
-      City.toModel(<ICity>{ ...entity.city }),
+      entity.cityId,
     );
   }
 }

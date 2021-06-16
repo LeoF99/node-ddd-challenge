@@ -1,5 +1,3 @@
-import City from '../../../city/entity/city.entity';
-
 export enum Gender {
   male = 'MALE',
   female = 'FEMALE',
@@ -16,7 +14,7 @@ interface IClient {
 
   age: number;
 
-  city: City;
+  cityId: number;
 }
 
 export default IClient;

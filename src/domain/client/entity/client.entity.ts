@@ -1,5 +1,4 @@
 import IClient, { Gender } from './interface/client.entity.interface';
-import City from '../../city/entity/city.entity';
 
 class Client {
   private readonly id?: number;
@@ -12,7 +11,7 @@ class Client {
 
   private readonly age: number;
 
-  private readonly city: City;
+  private readonly cityId: number;
 
   constructor(client: IClient) {
     this.id = client.id;
@@ -20,7 +19,7 @@ class Client {
     this.gender = client.gender;
     this.birthdate = client.birthdate;
     this.age = client.age;
-    this.city = client.city;
+    this.cityId = client.cityId;
   }
 
   public getId(): number | undefined {
@@ -43,8 +42,8 @@ class Client {
     return this.age;
   }
 
-  public getCity(): City {
-    return this.city;
+  public getCityId(): number {
+    return this.cityId;
   }
 }
 

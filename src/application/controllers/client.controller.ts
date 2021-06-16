@@ -21,7 +21,7 @@ class ClientController {
     const createdClient = await this.clientService.create({
       name,
       gender,
-      birthdate,
+      birthdate: new Date(birthdate),
       age,
       cityId,
     });
