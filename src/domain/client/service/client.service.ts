@@ -1,6 +1,5 @@
 import IClient from '../entity/interface/client.entity.interface';
 import IClientRepository from '../repository/client.repository.interface';
-import ICityRepository from '../../city/repository/city.repository.interface';
 import { NotFound } from '../../exceptions/business.exception';
 
 const CLIENT_NOT_FOUND_MESSAGE = 'Client not found!';

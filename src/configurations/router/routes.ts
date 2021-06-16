@@ -4,6 +4,7 @@ import CityController from '../../application/controllers/city.controller';
 import ClientController from '../../application/controllers/client.controller';
 import CityControllerFactory from '../factories/city.controller.factory';
 import ClientControllerFactory from '../factories/client.controller.factory';
+import awaitHandler from '../../infrastructure/middlewares/awaitHandler.middleware';
 
 class Routes {
   private readonly router: Router;
@@ -24,15 +25,15 @@ class Routes {
   }
 
   private setRoutes(): void {
-    this.router.post('/cities', this.cityController.create);
-    this.router.get('/cities/name', this.cityController.findByName);
-    this.router.get('/cities/state', this.cityController.findByState);
+    this.router.post('/cities', awaitHandler(this.cityController.create));
+    this.router.get('/cities/name', awaitHandler(this.cityController.findByName));
+    this.router.get('/cities/state', awaitHandler(this.cityController.findByState));
 
-    this.router.post('/clients', this.clientController.create);
-    this.router.get('/clients/name', this.clientController.findByName);
-    this.router.get('/clients/:id', this.clientController.findById);
-    this.router.delete('/clients/:id', this.clientController.remove);
-    this.router.patch('/clients/:id', this.clientController.updateName);
+    this.router.post('/clients', awaitHandler(this.clientController.create));
+    this.router.get('/clients/name', awaitHandler(this.clientController.findByName));
+    this.router.get('/clients/:id', awaitHandler(this.clientController.findById));
+    this.router.delete('/clients/:id', awaitHandler(this.clientController.remove));
+    this.router.patch('/clients/:id', awaitHandler(this.clientController.updateName));
   }
 }
 
