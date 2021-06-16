@@ -9,7 +9,6 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "prettier",
     "plugin:boundaries/recommended"
   ],
   "globals": {
@@ -22,7 +21,7 @@
     "sourceType": "module",
     "project": "tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "prettier", "boundaries"],
+  "plugins": ["@typescript-eslint", "boundaries"],
   "rules": {
     "@typescript-eslint/prefer-readonly": [
       "error",
