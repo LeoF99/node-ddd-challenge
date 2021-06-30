@@ -1,8 +1,6 @@
 # Node-challenge
 
-This is my entry for the Compasso selective process for Node.Js developer.
-
-The requisites can be viwed [here](https://github.com/recrutamento-compasso/NodeJS-Interview)
+This is a personal challenge to test DDD and other tecnologies
 
 ## Installation
 
